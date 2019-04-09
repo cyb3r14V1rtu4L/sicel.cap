@@ -1,40 +1,42 @@
-<div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
-        <div class="mt5 modal-form">
-
-            <form method="post" action="/login">
 
 
-                <h4 class='text-danger text-center login-text-danger'></h4>
 
 
-                <?php
-                if(isset($error)){
-                    echo $error;
-                }
+<div class="login-wrap">
+    <div class="login-html">
+        <h5 class="text-center" style="color: white;">Sistema de Captura Electoral | <b>Promovidos</b></h5>
 
-                ?>
-
-                <div class="form-group">
-                    <input class="form-control shadow" type="text" name="email" placeholder="User:">
+        <form method="post" action="/login">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">SICEL</label>
+            <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <label for="email" class="label">Usuario</label>
+                        <input id="email" name="email" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="password" class="label">Clave</label>
+                        <input id="password" name="password" type="password" class="input" data-type="password">
+                    </div>
+                    <div class="group">
+                        <input type="hidden" name="submitButton" value="1">
+                        <input type="submit" class="button" value="Entrar">
+                    </div>
+                    <div class="hr"></div>
                 </div>
-
-                <div class="form-group">
-                    <input class="form-control shadow" type="password" name="password" placeholder="Password:">
-                </div>
-
-                <!--<div class="checkbox">
-                    <label class="text-gray2">
-                        <input type="checkbox">Remember my password <a href="#" class="text-green">I forgot my password</a></label>
+                <!--<div class="for-pwd-htm">
+                    <div class="group">
+                        <label for="user" class="label">Usuario</label>
+                        <input id="user" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Reset Password">
+                    </div>
+                    <div class="hr"></div>
                 </div>-->
-                <input type="hidden" name="submitButton" value="1">
+            </div>
 
-                <div class="text-center">
-                    <button class="btn btn-primary text-center login-btn"  type="submit">Entrar</button>
-                </div>
-
-            </form>
-        </div>
+        </form>
     </div>
 </div>
-
