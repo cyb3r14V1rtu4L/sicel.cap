@@ -1,0 +1,91 @@
+<?php
+
+if(isset($session['autenticado']))
+{
+    ?>
+    <div class="header navbar navbar-inverse ">
+        <!-- BEGIN TOP NAVIGATION BAR -->
+        <div class="navbar-inner">
+
+            <div class="header-seperation" style="background-color: #761c19">
+                <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">
+                    <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu"  class="" >
+                            <div class="iconset top-menu-toggle-white"></div>
+                        </a> </li>
+                </ul>
+                <!-- BEGIN LOGO-->
+                <!--<a href="#"><img src="/App/Layout/assets/img/header-logo.png" class="logo" alt=""  data-src="/public/img/logo.png" width="250" height="61"/></a>-->
+                <!-- END LOGO-->
+
+            </div>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <div class="header-quick-nav" >
+                <!-- BEGIN TOP NAVIGATION MENU -->
+
+                <!-- END TOP NAVIGATION MENU -->
+
+                <!-- BEGIN CHAT TOGGLER -->
+                <div class="pull-right">
+
+                    <ul class="nav quick-section pull-right ">
+                        <li class="quicklinks"> <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">
+                                <div class="iconset top-chat-dark "></div>
+                            </a>
+                            <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
+                                <!--<li><a href="user-profile.html"> My Account</a> </li>
+                                <li><a href="calender.html">My Calendar</a> </li>
+                                <li><a href="email.html"> My Inbox&nbsp;&nbsp;<span class="badge badge-important animated bounceIn">2</span></a> </li>
+                                <li class="divider"></li>-->
+                                <li><a href="/login/lockscreen"><i class="fa fa-lock"></i>&nbsp;&nbsp;Bloquear Pantalla</a></li>
+                                <li><a href="/logout"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Salir</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="quicklinks"> <span class="h-seperate"></span></li>
+
+                    </ul>
+                </div>
+                <!-- END CHAT TOGGLER -->
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+        <!-- END TOP NAVIGATION BAR -->
+    </div>
+    <!-- END HEADER -->
+    <?php
+}
+
+?>
+
+<?php
+if($session['autenticado'])
+{
+    ?>
+    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar" id="main-menu">
+        <!-- BEGIN MINI-PROFILE -->
+        <div class="page-sidebar-wrapper scrollbar-dynamic" id="main-menu-wrapper">
+
+            <!-- BEGIN SIDEBAR MENU -->
+            <ul>
+                <?php
+                switch($session['type'])
+                {
+                    case 2:
+                        include_once('menu/menu-admin.php');
+                        break;
+                }
+                ?>
+            </ul>
+
+
+            <div class="clearfix"></div>
+            <!-- END SIDEBAR MENU -->
+        </div>
+    </div>
+
+    <!-- END SIDEBAR -->
+    <?php
+}
+
+?>

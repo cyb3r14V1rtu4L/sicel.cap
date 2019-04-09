@@ -1,0 +1,718 @@
+body {
+    min-height: 2000px;
+    padding-top: 70px;
+}
+
+
+.map, .map-wrapper {
+    height: 100%;
+}
+
+.map-wrapper .geo-location {
+    -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background-color: #4611a7;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+    right: 20px;
+    top: 20px;
+    z-index: 1;
+    cursor: pointer;
+}
+.map-wrapper .geo-location:hover {
+    background-color: white;
+    color: #4611a7;
+}
+
+.map.show-marker-labels .marker .title {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+}
+.map .cluster:hover > div {
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.map .cluster > div {
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -moz-transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+    -webkit-transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+    transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+    -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+    background-color: #4611a7;
+    border: 2px solid #4611a7;
+    width: 36px;
+    height: 36px;
+    color: #fff !important;
+    line-height: 32px !important;
+}
+.map .cluster > div:after {
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    -moz-transform: translateZ(-2px);
+    -ms-transform: translateZ(-2px);
+    -webkit-transform: translateZ(-2px);
+    transform: translateZ(-2px);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+    border: 2px solid #4611a7;
+    background-color: #4611a7;
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    content: "";
+}
+.map .cluster > div:before {
+    text-shadow: none;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'fontawesome';
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-transform: none;
+    -moz-transform: translateZ(-4px);
+    -ms-transform: translateZ(-4px);
+    -webkit-transform: translateZ(-4px);
+    transform: translateZ(-4px);
+    content: "\f002";
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33px;
+    height: 36px;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+}
+.map a[href^="http://maps.google.com/maps"] {
+    display: none !important;
+}
+.map a[href^="https://maps.google.com/maps"] {
+    display: none !important;
+}
+.map .gmnoprint a, .map .gmnoprint span, .map .gm-style-cc {
+    display: none;
+}
+.map .marker {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+.map .marker:after {
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    -moz-transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    -moz-transform: scale(0.7, 0.7);
+    -ms-transform: scale(0.7, 0.7);
+    -webkit-transform: scale(0.7, 0.7);
+    transform: scale(0.7, 0.7);
+    width: 14px;
+    height: 4px;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+.map .marker:hover:after, .map .marker.hover-state:after, .map .marker.active:after {
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+}
+.map .marker:hover .marker-wrapper, .map .marker.hover-state .marker-wrapper, .map .marker.active .marker-wrapper {
+    -moz-transform: rotateY(180deg) translateY(-4px);
+    -ms-transform: rotateY(180deg) translateY(-4px);
+    -webkit-transform: rotateY(180deg) translateY(-4px);
+    transform: rotateY(180deg) translateY(-4px);
+}
+.map .marker:hover .marker-wrapper .pin:after, .map .marker.hover-state .marker-wrapper .pin:after, .map .marker.active .marker-wrapper .pin:after {
+    -moz-transform: translateX(-1px);
+    -ms-transform: translateX(-1px);
+    -webkit-transform: translateX(-1px);
+    transform: translateX(-1px);
+    -moz-transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+.map .marker:hover .title, .map .marker.hover-state .title, .map .marker.active .title {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+}
+.map .marker.active .marker-wrapper:before {
+    -webkit-animation-delay: 0s;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-name: pulse;
+    -webkit-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-delay: 0s;
+    -moz-animation-duration: 2s;
+    -moz-animation-name: pulse;
+    -moz-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    -moz-animation-iteration-count: infinite;
+    -o-animation-delay: 0s;
+    -o-animation-duration: 2s;
+    -o-animation-name: pulse;
+    -o-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    -o-animation-iteration-count: infinite;
+    animation-delay: 0s;
+    animation-duration: 2s;
+    animation-name: pulse;
+    animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    animation-iteration-count: infinite;
+}
+.map .marker .marker-wrapper {
+    -moz-transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+    -webkit-transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+    transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+    position: relative;
+    transform-style: preserve-3d;
+    width: 37px;
+    height: 49px;
+}
+.map .marker .marker-wrapper:before {
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    background-color: #4611a7;
+    width: 37px;
+    height: 37px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    z-index: -1;
+}
+.map .marker .marker-wrapper:after {
+    text-shadow: none;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'fontawesome';
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-transform: none;
+    -moz-transform: translateZ(-4px);
+    -ms-transform: translateZ(-4px);
+    -webkit-transform: translateZ(-4px);
+    transform: translateZ(-4px);
+    content: "\f002";
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 37px;
+    height: 37px;
+    line-height: 34px;
+    font-size: 14px;
+    text-align: center;
+}
+.map .marker .marker-wrapper .pin {
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px white;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px white;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px white;
+    transform-style: preserve-3d;
+    border: 2px solid #4611a7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 37px;
+    height: 37px;
+    background-size: cover;
+}
+.map .marker .marker-wrapper .pin:before {
+    -moz-transform: translateZ(-2px);
+    -ms-transform: translateZ(-2px);
+    -webkit-transform: translateZ(-2px);
+    transform: translateZ(-2px);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    border: 2px solid #4611a7;
+    content: "";
+    z-index: -2px;
+    background-color: #4611a7;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 37px;
+    height: 37px;
+    z-index: 1;
+}
+.map .marker .marker-wrapper .pin .image {
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px white;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px white;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px white;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+.map .marker .marker-wrapper .pin .image:after {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 4px 0 4px;
+    border-color: #4611a7 transparent transparent transparent;
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.map .marker .tag {
+    -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    -moz-transform: translateZ(3px);
+    -ms-transform: translateZ(3px);
+    -webkit-transform: translateZ(3px);
+    transform: translateZ(3px);
+    position: absolute;
+    top: -3px;
+    right: -1px;
+    z-index: -1;
+    background-color: #4611a7;
+    width: 19px;
+    font-size: 9px;
+    height: 19px;
+    color: #fff;
+    text-align: center;
+    line-height: 18px;
+    transform-style: preserve-3d;
+}
+.map .marker .tag i {
+    -moz-transform: translateZ(2px);
+    -ms-transform: translateZ(2px);
+    -webkit-transform: translateZ(2px);
+    transform: translateZ(2px);
+    transform-style: preserve-3d;
+}
+.map .marker .title {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    -moz-transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+    position: absolute;
+    left: 50px;
+    top: 5px;
+    white-space: nowrap;
+    background-color: #fff;
+    padding: 2px 4px;
+}
+.map .marker .title:after {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 6px 4px 0;
+    border-color: transparent #fff transparent transparent;
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.map .marker .title:before {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 6px 4px 0;
+    border-color: transparent rgba(0, 0, 0, 0.2) transparent transparent;
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 2px;
+    bottom: 0;
+    margin: auto;
+}
+.map .tooltip .tooltip-inner {
+    -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    background-color: #fff;
+    color: #1f1f1f;
+}
+.map .tooltip .tooltip-arrow {
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    border-top-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    bottom: -1px;
+}
+.map .tooltip .tooltip-arrow:after {
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 5px 0;
+    border-top-color: #fff;
+    position: absolute;
+    top: -6px;
+    left: -5px;
+    content: "";
+}
+
+
+/*chat*/
+
+
+ul {
+    list-style: none;
+    word-wrap: break-word;
+}
+
+/* Pages */
+
+.pages {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.page {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+/* Login Page */
+
+.login.page {
+    background-color: #000;
+}
+
+.login.page .form {
+    height: 100px;
+    margin-top: -100px;
+    position: absolute;
+
+    text-align: center;
+    top: 50%;
+    width: 100%;
+}
+
+.login.page .form .usernameInput {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    padding-bottom: 15px;
+    text-align: center;
+    width: 400px;
+}
+
+.login.page .title {
+    font-size: 200%;
+}
+
+.login.page .usernameInput {
+    font-size: 200%;
+    letter-spacing: 3px;
+}
+
+.login.page .title, .login.page .usernameInput {
+    color: #fff;
+    font-weight: 100;
+}
+
+/* Chat page */
+
+.chat.page {
+    display: none;
+}
+
+/* Font */
+
+.messages {
+    font-size: 150%;
+}
+
+.inputMessage {
+    font-size: 100%;
+}
+
+.log {
+    color: gray;
+    font-size: 70%;
+    margin: 5px;
+    text-align: center;
+}
+
+/* Messages */
+
+.chatArea {
+    height: 100%;
+    padding-bottom: 60px;
+}
+
+.messages {
+    height: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    padding: 10px 20px 10px 20px;
+}
+
+.message.typing .messageBody {
+    color: gray;
+}
+
+.username {
+    font-weight: 700;
+    overflow: hidden;
+    padding-right: 15px;
+    text-align: right;
+}
+
+/* Input */
+
+.inputMessage {
+    border: 10px solid #000;
+    bottom: 0;
+    height: 60px;
+    left: 0;
+    outline: none;
+    padding-left: 10px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+}
+
+/*
+Login Form
+*/
+
+.login-wrap{
+    width: 100%;
+    margin:auto;
+    max-width:510px;
+    min-height:510px;
+    position:relative;
+    background-color: #398439;
+    background-size: cover;
+    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+
+.login-html{
+    width:100%;
+    height:100%;
+    position:absolute;
+    padding:90px 70px 50px 70px;
+    background: rgba(35, 88, 38, 0.5);
+}
+
+.login-html .sign-in-htm,
+.login-html .for-pwd-htm{
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    position:absolute;
+    -webkit-transform:rotateY(180deg);
+    transform:rotateY(180deg);
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+    -webkit-transition:all .4s linear;
+    transition:all .4s linear;
+}
+
+.login-html .sign-in,
+.login-html .for-pwd,
+.login-form .group .check{
+    display:none;
+}
+
+.login-html .tab,
+.login-form .group .label,
+.login-form .group .button{
+    text-transform:uppercase;
+}
+
+.login-html .tab{
+    font-size:22px;
+    margin-right:15px;
+    padding-bottom:5px;
+    margin:0 15px 10px 0;
+    display:inline-block;
+    border-bottom:2px solid transparent;
+}
+
+.login-html .sign-in:checked + .tab,
+.login-html .for-pwd:checked + .tab{
+    color:#fff;
+    border-color:#fff;
+}
+
+.login-form{
+    min-height:345px;
+    position:relative;
+    -webkit-perspective:1000px;
+    perspective:1000px;
+    -webkit-transform-style:preserve-3d;
+    transform-style:preserve-3d;
+}
+.login-form .group{
+    margin-bottom:15px;
+}
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button{
+    width:100%;
+    color:#fff;
+    display:block;
+}
+.login-form .group .input,
+.login-form .group .button{
+    border:none;
+    padding:15px 20px;
+    border-radius:25px;
+    background:rgba(255,255,255,.1);
+}
+.login-form .group input[data-type="password"]{
+    text-security:circle;
+    -webkit-text-security:circle;
+}
+.login-form .group .label{
+    color:#aaa;
+    font-size:12px;
+}
+.login-form .group .button{
+    background:#398439;
+}
+.login-form .group label .icon
+    width:15px;
+    height:15px;
+    border-radius:2px;
+    position:relative;
+    display:inline-block;
+    background:rgba(255,255,255,.1);
+}
+.login-form .group label .icon:before,
+.login-form .group label .icon:after{
+    content:'';
+    width:10px;
+    height:2px;
+    background:#fff;
+    position:absolute;
+    -webkit-transition:all .2s ease-in-out 0s;
+    transition:all .2s ease-in-out 0s;
+}
+.login-form .group label .icon:before{
+    left:3px;
+    width:5px;
+    bottom:6px;
+    -webkit-transform:scale(0) rotate(0);
+    transform:scale(0) rotate(0);
+}
+.login-form .group label .icon:after{
+    top:6px;
+    right:0;
+    -webkit-transform:scale(0) rotate(0);
+    transform:scale(0) rotate(0);
+}
+.login-form .group .check:checked + label{
+    color:#fff;
+}
+.login-form .group .check:checked + label .icon{
+    background:#fff;
+}
+.login-form .group .check:checked + label .icon:before{
+    -webkit-transform:scale(1) rotate(45deg);
+    transform:scale(1) rotate(45deg);
+}
+.login-form .group .check:checked + label .icon:after{
+    -webkit-transform:scale(1) rotate(-45deg);
+    transform:scale(1) rotate(-45deg);
+}
+.login-html .sign-in:checked + .tab + .for-pwd + .tab + .login-form .sign-in-htm{
+    -webkit-transform:rotate(0);
+    transform:rotate(0);
+}
+.login-html .for-pwd:checked + .tab + .login-form .for-pwd-htm{
+    -webkit-transform:rotate(0);
+    transform:rotate(0);
+}
+
+.hr{
+    height:2px;
+    margin:60px 0 50px 0;
+    background:rgba(255,255,255,.2);
+}
+.foot-lnk{
+    text-align:center;
+}
+
