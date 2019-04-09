@@ -6,4 +6,5 @@
 /sql_scripts
 
 .idea
+.idea/*
 .htaccess
