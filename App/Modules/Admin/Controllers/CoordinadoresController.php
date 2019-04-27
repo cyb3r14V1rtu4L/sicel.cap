@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\Ine;
 
 
-class PromotoresController extends Controller
+class CoordinadoresController extends Controller
 {
 
     public function __construct()
@@ -21,20 +21,22 @@ class PromotoresController extends Controller
 
     public function index()
     {
+        if(Session::get('allUsers'))
+        {
+            Session::destroy('allUsers');
+        }
+
+        if(Session::get('page'))
+        {
+            $pagina=Session::get('page');
+        }else{
+            $pagina=1;
+        }
+
         $this->view->setJs(array('admin'));
         $allUsers = array();
         $this->view->set('allUsers',$allUsers);
-        $allSeccionals = array();
-
-        $allCoordinadores = Ine::where('es_coordinador', '=', true)->select("consecutivo","nombre_completo","clave_de_elector")->get()->toArray();
-        $this->view->set('allCoordinadores',$allCoordinadores);
-
-        if(isset($_SESSION['coordinaodr_id'])) {
-		    $allSeccionals = Ine::where('coordinador_id', '=', $_SESSION['coordinador_id'])->select("consecutivo","nombre_completo","clave_de_elector")->get()->toArray();
-        }
-	    $this->view->set('allSeccionals', $allSeccionals);
-
-        $this->view->setTemplates(array('promotores'),'Admin');
+        $this->view->setTemplates(array('coordinadores'),'Admin');
         $this->view->render('index');
     }
 

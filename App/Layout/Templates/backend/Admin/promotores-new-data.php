@@ -1,6 +1,11 @@
 
             <div class="row">
-
+                <input class="form-control "
+                       id="coordinador_id_0"
+                       name="coordinador_id_0"
+                       value="<?=$_SESSION['coordinador_id']?>"
+                       type="text"
+                />
                 <div class="col-lg-4">
                     <input id="clave_de_elector_0" name="clave_de_elector_0" type="hidden" class="form-control input-md" value="<?php if(isset($_SESSION['ine'])) { echo $_SESSION['ine']; }?>">
 
@@ -88,7 +93,7 @@
 
                 <div class="col-lg-3">
                     <div class="form-group">
-                        <label for="direccion_actual">Dirección Actual</label>
+                        <label for="direccion_actual_0">Dirección Actual</label>
 
                         <textarea class="form-control" id="direccion_actual_0" rows="4"></textarea>
                     </div>
@@ -145,7 +150,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-label">Horario Disponible</label>
+                        <label class="form-label">Horario Disponibles</label>
                         <div class="input-with-icon  ">
                             <i class="fa fa-clock-o"></i>
                             <input id="horario_disponible_0" name="horario_disponible_0" type="text" class="form-control input-md" value="" >
@@ -157,8 +162,12 @@
             </div>
 
             <div class="row">
+
                 <div class="col-lg-4">
-                    <label class="form-label">Vínculo o Enlace</label>
+
+
+
+                    <label class="form-label">Líder Seccional</label>
 
                     <select class="form-control "  id="seccional_id_0" name="seccional_id_0"
                             >
@@ -177,10 +186,11 @@
 
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="direccion_actual">Comentarios</label>
+                        <label for="comentarios_0">Propuestas Ciudadanas</label>
 
                         <textarea class="form-control" id="comentarios_0" rows="4"></textarea>
                     </div>
+
                 </div>
 
             </div>

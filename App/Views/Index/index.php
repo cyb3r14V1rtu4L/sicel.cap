@@ -1,7 +1,3 @@
-
-
-
-
 <div class="login-wrap">
     <div class="login-html">
         <h5 class="text-center" style="color: white;">Sistema de Captura Electoral | <b>Promovidos</b></h5>

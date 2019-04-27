@@ -7,7 +7,7 @@ use Core\Controller,
     Core\Session;
 use App\Models\User;
 use App\Models\Ine;
-
+use App\Models\XlsCordinador;
 
 class IndexController extends Controller
 {
@@ -33,8 +33,8 @@ class IndexController extends Controller
             $pagina=1;
         }
 
-        $allPromotores = Ine::where('es_promotor', '=', true)->select("consecutivo","nombre_completo","clave_de_elector")->get()->toArray();
-        $this->view->set('allPromotores',$allPromotores);
+        $allCoordinadores = Ine::where('es_coordinador', '=', true)->select("consecutivo","nombre_completo","clave_de_elector")->get()->toArray();
+        $this->view->set('allCoordinadores',$allCoordinadores);
 
         $this->view->setJs(array('admin'));
         $allUsers = array();
@@ -113,13 +113,56 @@ class IndexController extends Controller
 
     public function export_xls()
     {
-        $export_data = Ine::select('consecutivo','paterno','materno','nombres',
+
+        $Coordinador = Ine::where('consecutivo', '=', $_SESSION['coordinador_id'])->select("consecutivo","nombre_completo","clave_de_elector")->get()->toArray();
+
+
+        $export_data = Ine::select('consecutivo','coordinador_id','paterno','materno','nombres',
                                   'nombre_completo','clave_de_elector','folio',
                                   'estado','municipio','seccion','casilla',
                                   'tipo_dextraordinaria_contigua_casilla',
                                   'casilla_voto','ocupacion','direccion1', 'direccion2',
                                   'direccion3', 'colonia', 'cod_pos','direccion')
-                            ->where('promotor_id', '=', $_SESSION['promotor_id'])->get()->toArray();
+                            ->where('coordinador_id', '=', $_SESSION['coordinador_id'])
+                            ->get()->toArray();
+
+        $export_data = XlsCordinador::select(
+            'clave_de_elector'
+            ,'paterno'
+            ,'materno'
+            ,'nombres'
+            ,'nombre_completo'
+            ,'folio'
+            ,'estado'
+            ,'municipio'
+            ,'seccion'
+            ,'casilla'
+            ,'tipo_dextraordinaria_contigua_casilla'
+            ,'casilla_voto'
+            ,'ocupacion'
+            ,'ocupacion_actual'
+            ,'direccion1'
+            ,'direccion2'
+            ,'direccion3'
+            ,'colonia'
+            ,'cod_pos'
+            ,'direccion'
+            ,'telefono'
+            ,'tiene_whatsapp'
+            ,'facebook'
+            ,'correo'
+            ,'lugar_trabajo'
+            ,'horario_disponible'
+            ,'fecha_grabo'
+            ,'status'
+            ,'edad'
+            ,'propuestas_ciudadanas'
+            ,'coordinador'
+            ,'seccional'
+            ,'promotor','folio_promotor'  )
+            ->where('coordinador_id', '=', $_SESSION['coordinador_id'])
+            ->where('es_promovido','=',true)
+            ->get()->toArray();
 
         $fileName = "INE_DATA" .date("Hms") . ".xls";
  
@@ -138,6 +181,8 @@ class IndexController extends Controller
             }
             exit;           
         }
+
+        exit;
     }
 
     public function import()

@@ -88,7 +88,7 @@
 
                 <div class="col-lg-3">
                     <div class="form-group">
-                        <label for="direccion_actual">Dirección Actual</label>
+                        <label for="direccion_actual_0">Dirección Actual</label>
 
                         <textarea class="form-control" id="direccion_actual_0" rows="4"></textarea>
                     </div>
@@ -157,33 +157,15 @@
             </div>
 
             <div class="row">
-                <!--<div class="col-lg-4">
-                    <label class="form-label">Vínculo o Enlace</label>
-
-                    <select class="form-control "  id="seccional_id_" name="seccional_id_"
-                            onchange="changeMembershipType(this); return false;">
-
-                        <option value="">Seleccionar</option>
-                        <option value="1">Seccional 1</option>
-                        <option value="2">Seccional 2</option>
-                        <?php
-                        /*foreach($LEVELS as $l=>$ship)
-                        {
-                            if($l >= $level)
-                            {
-                                ?>
-                                <option value="<?php echo $ship;?>" <?php echo ($rs['membership'] == $ship)?'selected':''?>><?php echo $ship;?></option>
-                                <?php
-                            }
-                        }*/
-                        ?>
-
-                    </select>
-                </div>
-                -->
+                <input class="form-control "
+                       id="coordinador_id_0"
+                       name="coordinador_id_0"
+                       value="<?=$_SESSION['coordinador_id']?>"
+                       type="hidden"
+                />
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="direccion_actual">Comentarios</label>
+                        <label for="direccion_actual">Propuestas Ciudadanas</label>
 
                         <textarea class="form-control" id="comentarios_0" rows="4"></textarea>
                     </div>

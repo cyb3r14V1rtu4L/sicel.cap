@@ -67,27 +67,64 @@ function getUser()
     });
 }
 
-function changePromotor() {
-    $.ajax({
-        url: "/Ajax/setPromotor",
-        type: "POST",
-        dataType: "text",
-        async: true,
-        data: {
-            promotor_id: $('#promotor_id').val(),
-        },
-        success:
-            function(json)
-            {
-                console.log(json);
-
+function changeCoordinador() {
+    $('.generaXLS').hide();
+    if($('#coordinador_id').val() != '0'){
+        $.ajax({
+            url: "/Ajax/setCoordinador",
+            type: "POST",
+            dataType: "text",
+            async: true,
+            data: {
+                coordinador_id: $('#coordinador_id').val(),
             },
-        error:
-            function(xhr, textStatus, errorThrown)
-            {
-                console.log(textStatus);
-            }
-    });
+            success:
+                function(json)
+                {
+                    console.log(json);
+                    $('.generaXLS').show();
+
+                },
+            error:
+                function(xhr, textStatus, errorThrown)
+                {
+                    console.log(textStatus);
+                }
+        });
+    }else{
+        swal('SICEL', 'Seleccionar Coordinador','warning');
+    }
+
+}
+
+function changePromotor() {
+    $('.generaXLS').hide();
+    if($('#promotor_id').val() != '0'){
+        $.ajax({
+            url: "/Ajax/setPromotor",
+            type: "POST",
+            dataType: "text",
+            async: true,
+            data: {
+                promotor_id: $('#promotor_id').val(),
+            },
+            success:
+                function(json)
+                {
+                    console.log(json);
+                    $('.generaXLS').show();
+
+                },
+            error:
+                function(xhr, textStatus, errorThrown)
+                {
+                    console.log(textStatus);
+                }
+        });
+    }else{
+        swal('SICEL', 'Seleccionar Promotor','warning');
+    }
+
 }
 
 function mostrarXLS()
@@ -99,7 +136,7 @@ function mostrarXLS()
         async: true,
         data: {
             xls_xtr: 1,
-            promotor_id: $('#promotor_id').val(),
+            coordinador_id: $('#coordinador_id').val(),
         },
         success:
             function(json)

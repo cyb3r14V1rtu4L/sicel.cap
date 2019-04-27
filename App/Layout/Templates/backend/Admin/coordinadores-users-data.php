@@ -164,30 +164,31 @@ if($allUsers !== 'INE NO ENCONTRADA') {
             </div>
 
             <div class="row">
-                    <input class="form-control "
-                           id="coordinador_id_<?php echo $rs['consecutivo']; ?>"
-                           name="coordinador_id_<?php echo $rs['consecutivo']; ?>"
-                           value="<?=$_SESSION['coordinador_id']?>"
-                           type="hidden"
-                    />
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="comentarios_<?=$rs['consecutivo'];?>">Propuestas Ciudadanas</label>
+
+                        <textarea class="form-control" id="comentarios_<?=$rs['consecutivo'];?>" rows="4"><?php echo $rs['comentarios']; ?></textarea>
+                    </div>
+                </div>
 
             </div>
-
 
             <div class="row">
                 <div class="col-md-6 pull-right">
                     <?php
-                    if ($rs['es_seccional'] == 0) {
+                    if ($rs['es_coordinador'] == 0) {
                         $class = 'btn-green';
                         $color = 'white';
                         $value = 1;
-                        $title = ' Agregar al Grupo Seccionales';
+                        $title = ' Agregar al Grupo Coordinadores';
                         $title_b = '<i class="fa fa-user" ></i>';
-                    } else if ($rs['es_seccional'] == 1) {
+                    } else if ($rs['es_coordinador'] == 1) {
                         $class = 'btn-danger';
                         $color = 'white';
                         $value = 0;
-                        $title = ' Eliminar del Grupo Seccionales';
+                        $title = ' Eliminar del Grupo Coordinadores';
                         $title_b = '<i class="fa fa-lock" ></i>';
                     }
                     ?>
@@ -198,11 +199,9 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                             title="<?=$title;?>"
                             uid="<?=$rs['consecutivo'];?>"
                             active="<?=$value;?>"
-                            es_coordinador = "<?=($rs['es_coordinador
-                            ']==1) ? 1:0;?>"
+                            es_coordinador = "<?=($rs['es_coordinador']==1) ? 1:0;?>"
                             es_seccional = "<?=($rs['es_seccional']==1) ? 1:0;?>"
                             es_promotor = "<?=($rs['es_promotor']==1) ? 1:0;?>"
-
                             onclick="ineExtract(this)"
                     >
                         <?=$title_b;?>

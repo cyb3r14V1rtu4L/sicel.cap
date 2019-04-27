@@ -215,11 +215,11 @@
     }
     /*** Body ***/
     body {
-        background-color: ##761c19;
+        background-color: #730099;
         padding-top: 0px;
     }
     .page-sidebar.opened {
-        background-color: #8e1e08 !important;
+        background-color: #4dd2ff !important;
         height: auto;
         font-family: 'Open Sans';
         width: 250px;
@@ -230,7 +230,7 @@
         width: 45px;
         position: absolute;
         height: 100%;
-        background-color: #761c19 !important;
+        background-color: #730099 !important;
     }
     .page-sidebar.opened .inner-menu {
         display: inline-block;
@@ -252,8 +252,8 @@
     .page-sidebar.opened .page-sidebar-wrapper > ul > li.open > a,
     .page-sidebar.opened .page-sidebar-wrapper > ul > li > a:hover,
     .page-sidebar.opened .page-sidebar-wrapper > ul > li:hover > a {
-        background: #8e1e08;
-        /* border-left:4px solid  #761c19;*/
+        background: #4dd2ff;
+        /* border-left:4px solid  #730099;*/
         padding: 11.5px 31px;
         color: #fff;
     }
@@ -291,7 +291,7 @@
         font-weight: 600;
     }
     .page-sidebar.opened .page-sidebar-wrapper > ul > li > ul.sub-menu > li > a:hover {
-        background: #8e1e08 !important;
+        background: #4dd2ff !important;
     }
     /* 3rd level sub menu */
     .page-sidebar.opened .page-sidebar-wrapper > ul > li > ul.sub-menu li > ul.sub-menu > li.active > a,
@@ -463,7 +463,7 @@
         display: none;
     }
     .page-sidebar {
-        background-color: #761c19 !important;
+        background-color: #730099 !important;
     }
     .page-sidebar .page-sidebar-wrapper > ul > li.open > a,
     .page-sidebar .page-sidebar-wrapper > ul > li > a:hover,
@@ -533,7 +533,7 @@
 /* Portrait view of all tablet devices */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
     body {
-        background-color: #8e1e08;
+        background-color: #4dd2ff;
     }
     body.hide-top-content-header .header {
         width: 100%;
@@ -548,7 +548,7 @@
         height: 100%;
     }
     .inner-menu-always-open .page-sidebar .page-sidebar-wrapper {
-        background-color: #761c19 !important;
+        background-color: #730099 !important;
     }
     .inner-menu-always-open .page-sidebar .slimScrollDiv {
         overflow: visible !important;
@@ -651,7 +651,7 @@
     .page-sidebar {
         position: fixed;
         width: 260px;
-        background-color: #8e1e08 !important;
+        background-color: #4dd2ff !important;
         z-index: auto;
         visibility: hidden;
         opacity: 0;
@@ -705,7 +705,7 @@
     .page-sidebar .page-sidebar-wrapper > ul > li.open > a,
     .page-sidebar .page-sidebar-wrapper > ul > li > a:hover,
     .page-sidebar .page-sidebar-wrapper > ul > li:hover > a {
-        background: #8e1e08;
+        background: #4dd2ff;
     }
     .page-sidebar .page-sidebar-wrapper > ul > li.open > a,
     .page-sidebar .page-sidebar-wrapper > ul > li > a:hover,
@@ -809,7 +809,7 @@
         overflow: visible;
     }
     .inner-menu-always-open .page-sidebar .page-sidebar-wrapper ul {
-        background-color: #761c19;
+        background-color: #730099;
     }
     .inner-menu-always-open .page-sidebar .slimScrollDiv {
         overflow: visible !important;

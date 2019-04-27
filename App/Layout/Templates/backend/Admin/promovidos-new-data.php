@@ -84,11 +84,18 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="form-group">
             <label for="direccion_actual">Dirección Actual</label>
 
             <textarea class="form-control" id="direccion_actual_0" rows="4"></textarea>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="comentarios_0">Propuestas Ciudadanas</label>
+
+            <textarea class="form-control" id="comentarios_0" rows="4"></textarea>
         </div>
     </div>
 </div>

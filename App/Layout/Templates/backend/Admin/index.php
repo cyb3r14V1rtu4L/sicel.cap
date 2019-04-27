@@ -9,16 +9,15 @@
 
         <div class="row">
             <div class="col-lg-4">
-                <label class="form-label">Promotor</label>
-                <select class="form-control "  id="promotor_id" name="promotor_id"
-                        onchange="changePromotor();"
+                <select class="form-control "  id="coordinador_id" name="coordinador_id"
+                        onchange="changeCoordinador();"
                 >
-                    <option selected value="0">Seleccionar Promotor</option>
+                    <option selected value="0">Seleccionar [COORDINADOR]</option>
                     <?php
-                    foreach($allPromotores as $promotor)
+                    foreach($allCoordinadores as $coordinador)
                     {
                         ?>
-                        <option value="<?php echo $promotor['consecutivo'];?>" ><?php echo $promotor['clave_de_elector'].' - '.$promotor['nombre_completo'];?></option>
+                        <option value="<?php echo $coordinador['consecutivo'];?>" ><?php echo $coordinador['clave_de_elector'].' - '.$coordinador['nombre_completo'];?></option>
                         <?php
                     }
                     ?>
@@ -26,19 +25,17 @@
             </div>
         </div>
         <div class="row" id="content-users">
-
-
-
-            <div class="col-lg-2 pull-right">
+            <div class="col-lg-2 pull-right generaXLS" style="display: none;">
                 <a href="/admin/index/export_xls">
                     <button type="button"
                             class=" btn  btn-danger" data-toggle="tooltip"
                             data-placement="top"
+                            id=""
                             >Generar XLS
                     </button>
                 </a>
             </div>
-            <div class="col-lg-2 pull-right">
+            <div class="col-lg-2 pull-right generaXLS"  style="display: none;">
                     <button type="button"
                             class=" btn btn-primary" data-toggle="tooltip"
                             data-placement="top"

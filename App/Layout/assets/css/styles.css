@@ -562,7 +562,7 @@ Login Form
     max-width:510px;
     min-height:510px;
     position:relative;
-    background-color: #398439;
+    background-color: #4dd2ff;
     background-size: cover;
     box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
@@ -572,7 +572,7 @@ Login Form
     height:100%;
     position:absolute;
     padding:90px 70px 50px 70px;
-    background: rgba(35, 88, 38, 0.5);
+    background: rgba(77, 210, 255, 0.5);
 }
 
 .login-html .sign-in-htm,
@@ -647,11 +647,11 @@ Login Form
     -webkit-text-security:circle;
 }
 .login-form .group .label{
-    color:#aaa;
+    color:#fff;
     font-size:12px;
 }
 .login-form .group .button{
-    background:#398439;
+    background:#730099;
 }
 .login-form .group label .icon
     width:15px;

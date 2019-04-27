@@ -33,6 +33,9 @@ class PromovidosController extends Controller
             $pagina=1;
         }
 
+        $allCoordinadores = Ine::where('es_coordinador', '=', true)->select("consecutivo","nombre_completo","clave_de_elector")->get()->toArray();
+        $this->view->set('allCoordinadores',$allCoordinadores);
+
         $this->view->setJs(array('admin'));
         $allUsers = array();
         $this->view->set('allUsers',$allUsers);

@@ -6,19 +6,20 @@ function ineExtract(obj) {
     var mensajt = ($(obj).attr('active') == 1) ? 'success':'warning';
 
     var consecutivo = $(obj).attr('uid');
-    if($(obj).attr('es_promotor') == 1){
-        swal("SECCIONALES",
-            "Es Promotor",
+
+    if($(obj).attr('es_seccional') == 1){
+        swal("COORDINADORES",
+            "Es Seccional",
             "warning");
     }else{
         $.ajax({
-            url: "/Ajax/ineSeccionales",
+            url: "/Ajax/ineCoordinadores",
             type: "POST",
             dataType: "text",
             async: true,
             data: {
                 consecutivo: consecutivo,
-                es_seccional:$(obj).attr('active'),
+                es_coordinador:$(obj).attr('active'),
                 es_nuevo:$(obj).attr('uid'),
                 clave_de_elector:$('#clave_de_elector_'+consecutivo).val(),
                 municipio_txt:$('#municipio_'+consecutivo).val(),
@@ -36,18 +37,17 @@ function ineExtract(obj) {
                 lugar_trabajo:$('#lugar_trabajo_'+consecutivo).val(),
                 horario_disponible:$('#horario_disponible_'+consecutivo).val(),
                 comentarios:$('#comentarios_'+consecutivo).val(),
-                coordinador_id:parseInt($('#coordinador_id_'+consecutivo).val()),
             },
             success:
                 function(json)
                 {
                     //var data = $.parseJSON(json);
-                    swal("SECCIONALES",
+                    swal("COORDINADORES",
                         mensaje,
                         mensajt);
                     var addClazz = ($(obj).attr('active')=='0') ? 'btn-green' : 'btn-danger';
                     var removeClazz = ($(obj).attr('active')=='0') ? 'btn-danger' : 'btn-green';
-                    var labelButton = ($(obj).attr('active')=='0') ? '<i class="fa fa-user" ></i> Agregar la Grupo Seccionales' : '<i class="fa fa-lock" ></i> Eliminar del Grupo Seccionales';
+                    var labelButton = ($(obj).attr('active')=='0') ? '<i class="fa fa-user" ></i> Agregar al Grupo de Coordinadoresr' : '<i class="fa fa-lock" ></i> Eliminar del Grupo Coordinadores';
                     var labelTitle = ($(obj).attr('active')=='0') ? 'Agregar' : 'Importado';
                     var activeVal = ($(obj).attr('active')=='1') ? '0' : '1';
 
@@ -102,7 +102,7 @@ function ineUpdate(obj) {
             function(json)
             {
                 //var data = $.parseJSON(json);
-                swal("SECCIONALES",
+                swal("COORDINADORES",
                     mensaje,
                     mensajt);
             },
@@ -117,35 +117,29 @@ function ineUpdate(obj) {
 
 function getUser()
 {
+    $.ajax({
+        url: "/Ajax/searchCoordinadores",
+        type: "POST",
+        dataType: "text",
+        async: true,
+        data: {
+            search: $("#search-by-id").val(),
+        },
+        success:
+            function(json)
+            {
+                console.log(json);
+                console.log(json.html);
+                var data = $.parseJSON(json);
 
-    if($('#coordinador_id').val() !== '0'){
-        $.ajax({
-            url: "/Ajax/searchSeccionales",
-            type: "POST",
-            dataType: "text",
-            async: true,
-            data: {
-                search: $("#search-by-id").val(),
+                $('#main_users_list').html(data.html);
             },
-            success:
-                function(json)
-                {
-                    console.log(json);
-                    console.log(json.html);
-                    var data = $.parseJSON(json);
-
-                    $('#main_users_list').html(data.html);
-                },
-            error:
-                function(xhr, textStatus, errorThrown)
-                {
-                    console.log(textStatus);
-                }
-        });
-    }else{
-        swal('SICEL', 'Seleccionar Coordinador','warning');
-        $("#search-by-id").val('')
-    }
+        error:
+            function(xhr, textStatus, errorThrown)
+            {
+                console.log(textStatus);
+            }
+    });
 }
 
 function mostrarXLS()
@@ -199,34 +193,3 @@ function generarXLS()
             }
     });
 }
-
-function changeCoordinador() {
-    $('.generaXLS').hide();
-    if($('#coordinador_id').val() != '0'){
-        $.ajax({
-            url: "/Ajax/setCoordinador",
-            type: "POST",
-            dataType: "text",
-            async: true,
-            data: {
-                coordinador_id: $('#coordinador_id').val(),
-            },
-            success:
-                function(json)
-                {
-                    console.log(json);
-                    $('.generaXLS').show();
-
-                },
-            error:
-                function(xhr, textStatus, errorThrown)
-                {
-                    console.log(textStatus);
-                }
-        });
-    }else{
-        swal('SICEL', 'Seleccionar Coordinador','warning');
-    }
-
-}
-

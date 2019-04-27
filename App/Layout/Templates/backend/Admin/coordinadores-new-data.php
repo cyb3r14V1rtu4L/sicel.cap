@@ -1,22 +1,15 @@
 
-<?php
-$allUsers = (!empty($_SESSION['allUsers'])) ? $_SESSION['allUsers'] : $allUsers;
-if($allUsers !== 'INE NO ENCONTRADA') {
-    foreach ($allUsers as $rs) {
-        $since = false;
-        if (!empty($rs['signed_on'])) {
-            $since = explode(' ', $rs['signed_on']);
-        }
-
-        ?>
             <div class="row">
+
                 <div class="col-lg-4">
+                    <input id="clave_de_elector_0" name="clave_de_elector_0" type="hidden" class="form-control input-md" value="<?php if(isset($_SESSION['ine'])) { echo $_SESSION['ine']; }?>">
+
                     <div class="form-group">
                         <label class="form-label">Municipio</label>
                         <div class="input-with-icon  right">
                             <i class="fa fa-globe"></i>
 
-                            <input id="municipio_<?=$rs['consecutivo'];?>" name="municipio_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['municipio']; ?>" required="">
+                            <input id="municipio_0" name="municipio_0" type="text" class="form-control input-md" value="" required="">
                         </div>
                     </div>
                 </div>
@@ -26,7 +19,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <div class="input-with-icon  right">
                             <i class="fa fa-calendar"></i>
 
-                            <input id="fecha_grabo_<?=$rs['consecutivo'];?>" name="fecha_grabo_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['fecha_grabo']; ?>" required="">
+                            <input id="fecha_grabo_0" name="fecha_grabo_0" type="text" class="form-control input-md" value="" required="">
                         </div>
                     </div>
                 </div>
@@ -37,7 +30,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <label class="form-label">Sección</label>
                         <div class="input-with-icon  right">
                             <i class="fa fa-book"></i>
-                            <input id="seccion_<?=$rs['consecutivo'];?>" name="seccion_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['seccion']; ?>" required="">
+                            <input id="seccion_0" name="seccion_0" type="text" class="form-control input-md" value="" required="">
                         </div>
                     </div>
                 </div>
@@ -53,7 +46,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <div class="input-with-icon  right">
                             <i class="fa fa-user"></i>
 
-                            <input id="paterno_<?=$rs['consecutivo'];?>" name="paterno_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['paterno']; ?>" required="">
+                            <input id="paterno_0" name="paterno_0" type="text" class="form-control input-md" value="" required="">
                         </div>
                     </div>
                 </div>
@@ -64,7 +57,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <div class="input-with-icon  right">
                             <i class="fa fa-user"></i>
 
-                            <input id="materno_<?=$rs['consecutivo'];?>" name="materno_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['materno']; ?>">
+                            <input id="materno_0" name="materno_0" type="text" class="form-control input-md" value="">
                         </div>
                     </div>
                 </div>
@@ -74,7 +67,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <div class="input-with-icon  right">
                             <i class="fa fa-user"></i>
 
-                            <input id="nombres_<?=$rs['consecutivo'];?>" name="nombres_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['nombres']; ?>" required="">
+                            <input id="nombres_0" name="nombres_0" type="text" class="form-control input-md" value="" required="">
                         </div>
                     </div>
                 </div>
@@ -84,7 +77,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <div class="input-with-icon  right">
                             <i class="fa fa-user"></i>
 
-                            <input id="edad_<?=$rs['consecutivo'];?>" name="edad_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['edad']; ?>" required="">
+                            <input id="edad_0" name="edad_0" type="text" class="form-control input-md" value="" required="">
                         </div>
                     </div>
                 </div>
@@ -95,9 +88,9 @@ if($allUsers !== 'INE NO ENCONTRADA') {
 
                 <div class="col-lg-3">
                     <div class="form-group">
-                        <label for="direccion_actual_<?=$rs['consecutivo'];?>">Dirección Actual</label>
+                        <label for="direccion_actual_0">Dirección Actual</label>
 
-                        <textarea class="form-control" id="direccion_actual_<?=$rs['consecutivo'];?>" rows="4"><?php echo $rs['direccion']; ?></textarea>
+                        <textarea class="form-control" id="direccion_actual_0" rows="4"></textarea>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -105,7 +98,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <label class="form-label">Teléfono Celular</label>
                         <div class="input-with-icon  ">
                             <i class="fa fa-phone"></i>
-                            <input id="telefono_<?=$rs['consecutivo'];?>" name="telefono_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['telefono']; ?>" required="">
+                            <input id="telefono_0" name="telefono_0" type="text" class="form-control input-md" value="" required="">
                         </div>
                     </div>
                 </div>
@@ -114,7 +107,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <label class="form-label">Facebook</label>
                         <div class="input-with-icon  ">
                             <i class="fa fa-facebook-square"></i>
-                            <input id="facebook_<?=$rs['consecutivo'];?>" name="facebook_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['facebook']; ?>" >
+                            <input id="facebook_0" name="facebook_0" type="text" class="form-control input-md" value="" >
                         </div>
                     </div>
                 </div>
@@ -123,7 +116,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <label class="form-label">E-Mail</label>
                         <div class="input-with-icon  ">
                             <i class="fa fa-envelope-square"></i>
-                            <input id="correo_<?=$rs['consecutivo'];?>" name="correo_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['correo']; ?>" >
+                            <input id="correo_0" name="correo_0" type="text" class="form-control input-md" value="" >
                         </div>
                     </div>
                 </div>
@@ -137,7 +130,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <label class="form-label">Ocupación</label>
                         <div class="input-with-icon  ">
                             <i class="fa fa-user"></i>
-                            <input id="ocupacion_<?=$rs['consecutivo'];?>" name="ocupacion_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['ocupacion']; ?>" required="">
+                            <input id="ocupacion_0" name="ocupacion_0" type="text" class="form-control input-md" value="" required="">
                         </div>
                     </div>
                 </div>
@@ -146,7 +139,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <label class="form-label">Lugar Laboral</label>
                         <div class="input-with-icon  ">
                             <i class="fa fa-building"></i>
-                            <input id="lugar_trabajo_<?=$rs['consecutivo'];?>" name="lugar_trabajo_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['lugar_trabajo']; ?>" >
+                            <input id="lugar_trabajo_0" name="lugar_trabajo_0" type="text" class="form-control input-md" value="" >
                         </div>
                     </div>
                 </div>
@@ -155,7 +148,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                         <label class="form-label">Horario Disponible</label>
                         <div class="input-with-icon  ">
                             <i class="fa fa-clock-o"></i>
-                            <input id="horario_disponible_<?=$rs['consecutivo'];?>" name="horario_disponible_<?=$rs['consecutivo'];?>" type="text" class="form-control input-md" value="<?php echo $rs['horario_disponible']; ?>" >
+                            <input id="horario_disponible_0" name="horario_disponible_0" type="text" class="form-control input-md" value="" >
                         </div>
                     </div>
                 </div>
@@ -164,76 +157,66 @@ if($allUsers !== 'INE NO ENCONTRADA') {
             </div>
 
             <div class="row">
-                    <input class="form-control "
-                           id="coordinador_id_<?php echo $rs['consecutivo']; ?>"
-                           name="coordinador_id_<?php echo $rs['consecutivo']; ?>"
-                           value="<?=$_SESSION['coordinador_id']?>"
-                           type="hidden"
-                    />
+                <!--<div class="col-lg-4">
+                    <label class="form-label">Líder Seccional</label>
+
+                    <select class="form-control "  id="seccional_id_" name="seccional_id_"
+                            onchange="changeMembershipType(this); return false;">
+
+                        <option value="">Seleccionar</option>
+                        <option value="1">Seccional 1</option>
+                        <option value="2">Seccional 2</option>
+                        <?php
+                        /*foreach($LEVELS as $l=>$ship)
+                        {
+                            if($l >= $level)
+                            {
+                                ?>
+                                <option value="<?php echo $ship;?>" <?php echo ($rs['membership'] == $ship)?'selected':''?>><?php echo $ship;?></option>
+                                <?php
+                            }
+                        }*/
+                        ?>
+
+                    </select>
+                </div>
+                -->
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="comentarios_0">Propuestas Ciudadanas</label>
+
+                        <textarea class="form-control" id="comentarios_0" rows="4"></textarea>
+                    </div>
+                </div>
 
             </div>
 
-
             <div class="row">
-                <div class="col-md-6 pull-right">
+                <div class="col-lg-12 pull-right">
                     <?php
-                    if ($rs['es_seccional'] == 0) {
                         $class = 'btn-green';
                         $color = 'white';
                         $value = 1;
-                        $title = ' Agregar al Grupo Seccionales';
+                        $title = ' Agregar al Grupo Promovidos';
                         $title_b = '<i class="fa fa-user" ></i>';
-                    } else if ($rs['es_seccional'] == 1) {
-                        $class = 'btn-danger';
-                        $color = 'white';
-                        $value = 0;
-                        $title = ' Eliminar del Grupo Seccionales';
-                        $title_b = '<i class="fa fa-lock" ></i>';
-                    }
+
                     ?>
 
-                    <button type="button" id="deactivate_<?=$rs['consecutivo'];?>"
+                    <button type="button" id="deactivate_0"
                             class="deactivate btn btn-icon-toggle <?=$class ?>" data-toggle="tooltip"
                             data-placement="top"
                             title="<?=$title;?>"
-                            uid="<?=$rs['consecutivo'];?>"
+                            uid="0"
                             active="<?=$value;?>"
-                            es_coordinador = "<?=($rs['es_coordinador
-                            ']==1) ? 1:0;?>"
-                            es_seccional = "<?=($rs['es_seccional']==1) ? 1:0;?>"
-                            es_promotor = "<?=($rs['es_promotor']==1) ? 1:0;?>"
-
                             onclick="ineExtract(this)"
                     >
                         <?=$title_b;?>
                         <?=$title;?>
                     </button>
                 </div>
-                <div class="col-md-6">
-                    <button type="button"
-                            class="deactivate btn btn-icon-toggle btn-danger" data-toggle="tooltip"
-                            data-placement="top"
-                            title="Actualizar Registro"
-                            uid="<?=$rs['consecutivo'];?>"
-
-                            onclick="ineUpdate(this)"
-                    >
-                        Actualizar Registro
-                        <i class="fa fa-user" ></i>
-                    </button>
-                </div>
 
             </div>
         <hr>
 
-    <?php
-
-    }
-}else{
-
-    include_once('seccionales-new-data.php');
-
-}
-?>
 
 

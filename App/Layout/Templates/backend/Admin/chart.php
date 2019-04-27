@@ -82,7 +82,7 @@
                         <h3 class="panel-title"><i class="fa fa-building"></i> Properties</h3>
                     </div>
                     <div class="panel-body">
-                        <div id="properties" class="height-6" data-colors="#8e1e08,#D35A91,#0aa89e"></div>
+                        <div id="properties" class="height-6" data-colors="#4dd2ff,#D35A91,#0aa89e"></div>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                         <h3 class="panel-title"><i class="fa fa-users"></i> Members</h3>
                     </div>
                     <div class="panel-body">
-                        <div id="agents_member_graph"  data-colors="#8e1e08, #D35A91, #8056B3, #209ADC"></div>
+                        <div id="agents_member_graph"  data-colors="#4dd2ff, #D35A91, #8056B3, #209ADC"></div>
                     </div>
                 </div>
             </div>

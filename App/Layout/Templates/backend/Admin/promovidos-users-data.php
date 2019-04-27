@@ -13,6 +13,12 @@ if($allUsers !== 'INE NO ENCONTRADA') {
 
             <div class="row">
                 <div class="col-lg-4">
+                    <input class="form-control "
+                           id="coordinador_id_<?php echo $rs['consecutivo']; ?>"
+                           name="coordinador_id_<?php echo $rs['consecutivo']; ?>"
+                           value="<?=$_SESSION['coordinador_id']?>"
+                           type="hidden"
+                    />
                     <label class="form-label">Promotor</label>
                     <select class="form-control "  id="promotor_id_<?php echo $rs['consecutivo']; ?>" name="promotor_id_<?php echo $rs['consecutivo']; ?>"
                     >
@@ -145,9 +151,16 @@ if($allUsers !== 'INE NO ENCONTRADA') {
             <div class="row">
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="direccion_actual">Dirección Actual</label>
+                        <label for="direccion_actual_<?=$rs['consecutivo'];?>">Dirección Actual</label>
 
                         <textarea class="form-control" id="direccion_actual_<?=$rs['consecutivo'];?>" rows="4"><?php echo $rs['direccion']; ?></textarea>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="comentarios_<?=$rs['consecutivo'];?>">Propuestas Ciudadanas</label>
+
+                        <textarea class="form-control" id="comentarios_<?=$rs['consecutivo'];?>" rows="4"><?php echo $rs['comentarios']; ?></textarea>
                     </div>
                 </div>
             </div>
@@ -181,6 +194,8 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                             onclick="ineExtract(this)"
                             es_seccional = "<?=($rs['es_seccional']==1) ? 1:0;?>"
                             es_promotor = "<?=($rs['es_promotor']==1) ? 1:0;?>"
+                            es_coordinador = "<?=($rs['es_coordinador']==1) ? 1:0;?>"
+                            es_promovidoX = "<?=($rs['es_promovido']==1) ? 1:0;?>"
                             es_promovido = "<?=$es_promovido;?>"
                     >
                         <?=$title_b;?>

@@ -158,10 +158,16 @@ if($allUsers !== 'INE NO ENCONTRADA') {
 
             <div class="row">
                 <div class="col-lg-4">
-                    <label class="form-label">Vínculo o Enlace</label>
+                    <input class="form-control "
+                           id="coordinador_id_<?php echo $rs['consecutivo']; ?>"
+                           name="coordinador_id_<?php echo $rs['consecutivo']; ?>"
+                           value="<?=$_SESSION['coordinador_id']?>"
+                           type="hidden"
+                    />
+                    <label class="form-label">Líder Seccional</label>
                     <select class="form-control "  id="seccional_id_<?php echo $rs['consecutivo']; ?>" name="seccional_id_<?php echo $rs['consecutivo']; ?>"
                             >
-                        <option value="" selected>Seleccionar</option>
+                        <option value="0" selected>Seleccionar</option>
                         <?php
                         foreach($allSeccionals as $seccional)
                         {
@@ -174,7 +180,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="direccion_actual">Comentarios</label>
+                        <label for="comentarios_<?=$rs['consecutivo'];?>">Propuestas Ciudadanas</label>
 
                         <textarea class="form-control" id="comentarios_<?=$rs['consecutivo'];?>" rows="4"><?php echo $rs['comentarios']; ?></textarea>
                     </div>
@@ -241,7 +247,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
     }
 }else{
 
-    include_once('seccionales-new-data.php');
+    include_once('promotores-new-data.php');
 
 }
 ?>

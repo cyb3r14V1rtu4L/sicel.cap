@@ -60,14 +60,14 @@ class Session
             header('location:' . BASE_URL . 'login/lockscreen');
             exit;
         }elseif(!Session::get('autenticado')){
-            header('location:' . BASE_URL . 'access/type/7070');
+            header('location:' . BASE_URL . 'login');
             exit;
         }
 
         Session::tiempo();
 
         if(Session::getLevel($level) > Session::getLevel(Session::get('role'))){
-            header('location:' . BASE_URL . 'access/type/5050/');
+            header('location:' . BASE_URL . 'login');
             exit;
         }
     }
@@ -94,7 +94,7 @@ class Session
             header('location:' . BASE_URL . 'login/lockscreen');
             exit;
         }elseif(!Session::get('autenticado')){
-            header('location:' . BASE_URL . 'access/type/7070');
+            header('location:' . BASE_URL . 'login');
             exit;
         }
 

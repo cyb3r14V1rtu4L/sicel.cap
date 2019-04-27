@@ -96,7 +96,7 @@ if($allUsers !== 'INE NO ENCONTRADA') {
             <div class="row">
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="direccion_actual">Dirección Actual</label>
+                        <label for="direccion_actual_<?=$rs['consecutivo'];?>">Dirección Actual</label>
 
                         <textarea class="form-control" id="direccion_actual_<?=$rs['consecutivo'];?>" rows="4"><?php echo $rs['direccion']; ?></textarea>
                     </div>
