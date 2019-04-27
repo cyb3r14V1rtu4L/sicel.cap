@@ -236,7 +236,7 @@ class AjaxController extends Controller  {
         {
 
             $allUsers = Ine::where('consecutivo', 'like', $_POST['search'] .'%')
-                ->orWhere('nombre_completo', 'like', $_POST['search'] .'%')
+                //->orWhere('nombre_completo', 'like', $_POST['search'] .'%')
                 ->orWhere('clave_de_elector', 'like', $_POST['search'] .'%')
                 ->get()->toArray();
 
@@ -264,7 +264,7 @@ class AjaxController extends Controller  {
         {
 
             $allUsers = Ine::where('consecutivo', 'like', $_POST['search'] .'%')
-                ->orWhere('nombre_completo', 'like', $_POST['search'] .'%')
+                //->orWhere('nombre_completo', 'like', $_POST['search'] .'%')
                 ->orWhere('clave_de_elector', 'like', $_POST['search'] .'%')
                 ->get()->toArray();
 
@@ -293,7 +293,7 @@ class AjaxController extends Controller  {
         {
 
             $allUsers = Ine::where('consecutivo', 'like', $_POST['search'] .'%')
-                ->orWhere('nombre_completo', 'like', $_POST['search'] .'%')
+                //->orWhere('nombre_completo', 'like', $_POST['search'] .'%')
                 ->orWhere('clave_de_elector', 'like', $_POST['search'] .'%')
                 ->get()->toArray();
 
@@ -323,7 +323,7 @@ class AjaxController extends Controller  {
         {
             $allSeccionals = Ine::where('coordinador_id', '=', Session::get('coordinador_id'))->select("consecutivo","nombre_completo","clave_de_elector")->get()->toArray();
             $allUsers = Ine::where('consecutivo', 'like', $_POST['search'] .'%')
-                ->orWhere('nombre_completo', 'like', $_POST['search'] .'%')
+                //->orWhere('nombre_completo', 'like', $_POST['search'] .'%')
                 ->orWhere('clave_de_elector', 'like', $_POST['search'] .'%')
                 ->get()->toArray();
 
@@ -363,7 +363,7 @@ class AjaxController extends Controller  {
                                 ->toArray();
 
             $allUsers = Ine::where('consecutivo', 'like', $_POST['search'] .'%')
-                ->orWhere('nombre_completo', 'like', $_POST['search'] .'%')
+                //->orWhere('nombre_completo', 'like', $_POST['search'] .'%')
                 ->orWhere('clave_de_elector', 'like', $_POST['search'] .'%')
                 ->get()->toArray();
 
